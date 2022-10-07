@@ -15,3 +15,8 @@ after_success:
   - docker build -t alexvagionas/multi-server ./server
   - docker build -t alexvagionas/multi-worker ./worker
 
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push alexvagionas/multi-client
+  - docker push alexvagionas/multi-nginx
+  - docker push alexvagionas/multi-server
+  - docker push alexvagionas/multi-worker
